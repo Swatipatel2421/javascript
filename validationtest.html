@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body{
+            height: 800px;
+            background-color: darkcyan;
+        }
+        .counteiner{
+            width: 500PX;
+            background-color: blanchedalmond;
+            margin: 0 auto;
+        }
+        h1{
+            text-align: center;
+            color: black;
+            font-size: 50px;
+        }
+        input{
+            display: block;
+            margin:  0 auto;
+            padding: 10px 50px;
+        }
+        input[type='submit']{
+            padding: 5px  100px;
+        }
+        p{
+            color: red;
+            font-size: 25px;
+            text-align: center;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="counteiner">
+        <h1>login page</h1>
+        <form action="" onsubmit="return validForm()">
+            <input type="text" id="username" placeholder="enter username">
+            <P id="usererror"></P>
+            <input type="password" name="" id="password" placeholder="enter password">
+            <p id="passerror"></p>
+            <input type="submit" value="savedata"> <br>
+            <input type="tel" id="tel">
+            <p id="pluserror"></p>
+        </form>
+    </div>
+
+    <script>
+
+        let username = document.getElementById('username')
+        let password = document.getElementById('password')
+        let tel = document.getElementById('tel')
+        let done = 1
+
+        function validForm() {
+            event.preventDefault()
+            
+            if(username.value == ""){
+                // console.log("empty");
+               document.getElementById('usererror').innerHTML = "must be rq"
+               done = 0
+            }
+            else if(username.value.length < 3) {
+                document.getElementById('usererror').innerHTML = "mix 3 char"
+                done = 0
+            }
+            else{
+                document.getElementById('usererror').innerHTML = ""
+                done = 1
+            }
+            if(password.value == ""){
+                document.getElementById('passerror').innerHTML = 'plese enter the password'
+                done = 0
+            }
+            else{
+                document.getElementById('passerror').innerHTML = ''
+                done = 1
+
+            }
+            if(!tel.value.startsWith('+')){
+                //console.log("inside if")
+                document.getElementById('pluserror').innerHTML = 'enter code'
+                done = 0
+            }else{
+                document.getElementById('pluserror').innerHTML = ''
+                done = 1
+
+            }
+           
+           
+            if(done){
+                return true
+            }
+             else{
+                 return false
+            }
+        }
+
+    </script>
+</body>
+
+</html>
